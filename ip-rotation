@@ -7,5 +7,5 @@ clear
 while IFS= read -r line; do
 
 mullvad relay set location "$line" >/dev/null 2>&1
-mullvad connect; IP=$( curl -4 -s https://api.ipify.org ); echo "[*] IP changed: $IP $(date)"; sleep 120
+mullvad connect & IP=$( curl -4 -s https://api.ipify.org ) && echo "[*] IP changed: $IP $(date)" && sleep 120
 done < servers.txt
